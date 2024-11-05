@@ -23,6 +23,9 @@ const winningCombinations = [
     [2, 4, 6]
 ];
 
+
+
+
 // Event Listeners
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 restartButton.addEventListener('click', restartGame);
@@ -38,6 +41,8 @@ function handleCellClick(event) {
     updateCell(cell, index);
     checkWinner();
 }
+
+
 
 function updateCell(cell, index) {
     board[index] = currentPlayer;
