@@ -36,10 +36,14 @@ function handleCellClick(event) {
     const cell = event.target;
     const index = cell.getAttribute('data-index');
 
-    if (board[index] !== "" || !isGameActive) return;
+    if (!isGameActive) return;
 
+    if (board[index] !== "") {
+        removecell(cell, index);
+    } else {
     updateCell(cell, index);
     checkWinner();
+    }
 }
 
 
@@ -49,6 +53,11 @@ function updateCell(cell, index) {
     cell.textContent = currentPlayer;
 }
 
+
+function removecell(cell, index) {
+    board[index] = ""
+    cell.textContent = ""
+}
 function changePlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusText.textContent = `Player ${currentPlayer}'s turn`;
